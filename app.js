@@ -76,13 +76,14 @@ function checkMatch(){
     if(cards)
     if(cardChosen[0] == cardChosen[1]){
         console.log('good job')
-        cards[cardChoseIds[0]].setAttribute('src', 'images/white.png')
+        cards[cardChoseIds[0]].setAttribute('src', 'images/white.png')       
         cards[cardChoseIds[1]].setAttribute('src', 'images/white.png')
         cards[cardChoseIds[0]].removeEventListener('click', flipCard)
         cards[cardChoseIds[1]].removeEventListener('click', flipCard)
         cardsWon.push(cardChosen);
     }
     else{
+        
         console.log('otra vez sera')
         
     }
@@ -93,12 +94,13 @@ function flipCard () {
     //Cuando hacemos click buscamos el id que le hepmos puesto antes con el setAtribbute y que nos lo muestre
     //por consola para ver que todo este corrrecto
     let cardId = this.getAttribute('data-id')
+    
     cardChosen.push(cardArray[cardId].name)
     cardChoseIds.push(cardId)
-    console.log('clicked', cardId)
-    console.log(cardChosen)
+    
     this.setAttribute('src', cardArray[cardId].img)
     if(cardChosen.length === 2){
         setTimeout(checkMatch, 500);
     }
+    console.log(cardId)
 }
