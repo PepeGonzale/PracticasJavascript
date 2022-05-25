@@ -51,9 +51,12 @@ const cardArray = [
 
 const randomCards = cardArray.sort(() => 0.5 - Math.random())
 const gridDisplay = document.querySelector('#grid')
+const resultDisplay = document.querySelector('#result')
 let cardChosen = []
+//Devuelve el id del click que has hecho
 let cardChoseIds = []
 const cardsWon = []
+var contador = 0;
 
 function createBoard(){
     //Creamos un bucle for, para crear el elemento img y y darle un id
@@ -65,27 +68,49 @@ function createBoard(){
        card.addEventListener('click', flipCard)
        //Con el atributo append lo mostramos en el index.html
        gridDisplay.appendChild(card)
-      
     }
 }
 createBoard();
 
 function checkMatch(){
+    //Selecciona todos los elementos de img
     const cards = document.querySelectorAll('img')
+    const opcion1 = cardChoseIds[0];
+    const opcion2 = cardChoseIds[1]
     console.log('check for match')
-    if(cards)
-    if(cardChosen[0] == cardChosen[1]){
-        console.log('good job')
-        cards[cardChoseIds[0]].setAttribute('src', 'images/white.png')
-        cards[cardChoseIds[1]].setAttribute('src', 'images/white.png')
-        cards[cardChoseIds[0]].removeEventListener('click', flipCard)
-        cards[cardChoseIds[1]].removeEventListener('click', flipCard)
-        cardsWon.push(cardChosen);
+    if(opcion1 == opcion2){
+        
+        cards[opcion1].setAttribute('src', 'images/blank.png')
+        cards[opcion2].setAttribute('src', 'images/blank.png')
+        alert('You hace click the same image')
     }
-    else{
-        console.log('otra vez sera')
+    if(cardChosen[0] == cardChosen[1]   ){
+        alert('Good job')
+        //Te devuelve el id del primer elemento elegido, si es correcto le pasa la imagen blanca para no poder darle la vuelta
+        cards[opcion1].setAttribute('src', 'images/white.png')
+        console.log(cardChoseIds[0], cardChoseIds[1])
+        //Te devuelve el id del segundo elemento elegido, hace lo mismo que en el anterior
+        cards[opcion2].setAttribute('src', 'images/white.png')
+        //Elimina el evento click de los elegidos
+        cards[opcion1].removeEventListener('click', flipCard)
+        cards[opcion2].removeEventListener('click', flipCard)
+        cardsWon.push(cardChosen);
+        contador++
         
     }
+  
+    else{
+        cards[opcion1].setAttribute('src', 'images/blank.png')
+        cards[opcion2].setAttribute('src', 'images/blank.png')
+        alert('Sorry, not correct')
+    } 
+ 
+    resultDisplay.innerHTML = contador
+       if(contador == 6){
+        resultDisplay.innerHTML = 'Congratulations you win'
+    }
+    cardChosen = []
+    cardChoseIds = []
 }
 
 function flipCard () {
@@ -95,10 +120,12 @@ function flipCard () {
     let cardId = this.getAttribute('data-id')
     cardChosen.push(cardArray[cardId].name)
     cardChoseIds.push(cardId)
+    console.log(cardChoseIds)
     console.log('clicked', cardId)
     console.log(cardChosen)
     this.setAttribute('src', cardArray[cardId].img)
     if(cardChosen.length === 2){
         setTimeout(checkMatch, 500);
     }
+    console.log(cardChoseIds)
 }
