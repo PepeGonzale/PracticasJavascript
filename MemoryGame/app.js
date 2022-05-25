@@ -1,51 +1,51 @@
 const cardArray = [
     {
         name : 'fries',
-        img: 'images/fries.png'
+        img: '../images/fries.png'
     },
     {
         name: 'cheeseburger',
-        img: 'images/cheeseburger.png'
+        img: '../images/cheeseburger.png'
     },
     {
         name: 'hotdog',
-        img: 'images/hotdog.png'
+        img: '../images/hotdog.png'
     },
     {
         name: 'ice-cream',
-        img: 'images/ice-cream.png'
+        img: '../images/ice-cream.png'
     },
     {
         name: 'milkshake',
-        img: 'images/milkshake.png'
+        img: '../images/milkshake.png'
     },
     {
         name:'pizza',
-        img: 'images/pizza.png'
+        img: '../images/pizza.png'
     },
     {
         name : 'fries',
-        img: 'images/fries.png'
+        img: '../images/fries.png'
     },
     {
         name: 'cheeseburger',
-        img: 'images/cheeseburger.png'
+        img: '../images/cheeseburger.png'
     },
     {
         name: 'hotdog',
-        img: 'images/hotdog.png'
+        img: '../images/hotdog.png'
     },
     {
         name: 'ice-cream',
-        img: 'images/ice-cream.png'
+        img: '../images/ice-cream.png'
     },
     {
         name: 'milkshake',
-        img: 'images/milkshake.png'
+        img: '../images/milkshake.png'
     },
     {
         name:'pizza',
-        img: 'images/pizza.png'
+        img: '../images/pizza.png'
     }
 ]
 
@@ -62,7 +62,7 @@ function createBoard(){
     //Creamos un bucle for, para crear el elemento img y y darle un id
     for (let i = 0; i < cardArray.length; i++){
        const card = document.createElement('img')
-       card.setAttribute('src', 'images/blank.png')
+       card.setAttribute('src', '../images/blank.png')
        //Asignamos un id
        card.setAttribute('data-id', i)
        card.addEventListener('click', flipCard)
@@ -80,17 +80,17 @@ function checkMatch(){
     console.log('check for match')
     if(opcion1 == opcion2){
         
-        cards[opcion1].setAttribute('src', 'images/blank.png')
-        cards[opcion2].setAttribute('src', 'images/blank.png')
+        cards[opcion1].setAttribute('src', '../images/blank.png')
+        cards[opcion2].setAttribute('src', '../images/blank.png')
         alert('You hace click the same image')
     }
     if(cardChosen[0] == cardChosen[1]   ){
         alert('Good job')
         //Te devuelve el id del primer elemento elegido, si es correcto le pasa la imagen blanca para no poder darle la vuelta
-        cards[opcion1].setAttribute('src', 'images/white.png')
+        cards[opcion1].setAttribute('src', '../images/white.png')
         console.log(cardChoseIds[0], cardChoseIds[1])
         //Te devuelve el id del segundo elemento elegido, hace lo mismo que en el anterior
-        cards[opcion2].setAttribute('src', 'images/white.png')
+        cards[opcion2].setAttribute('src', '../images/white.png')
         //Elimina el evento click de los elegidos
         cards[opcion1].removeEventListener('click', flipCard)
         cards[opcion2].removeEventListener('click', flipCard)
@@ -100,8 +100,8 @@ function checkMatch(){
     }
   
     else{
-        cards[opcion1].setAttribute('src', 'images/blank.png')
-        cards[opcion2].setAttribute('src', 'images/blank.png')
+        cards[opcion1].setAttribute('src', '../images/blank.png')
+        cards[opcion2].setAttribute('src', '../images/blank.png')
         alert('Sorry, not correct')
     } 
  
