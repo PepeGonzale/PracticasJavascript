@@ -14,6 +14,7 @@ function randomSquare(){
         square.classList.remove('mole')
         
     })
+    //Obtenemos un div random, con su correspondiente id
     let randomSquare = squares[Math.floor(Math.random() * 9)]
     randomSquare.classList.add('mole')
     
@@ -36,10 +37,10 @@ function moveMole(){
     timerId = setInterval(randomSquare, 1000)
 }
 
-//Obtenemos un div random, con su correspondiente id
+
 moveMole()
 function countDown(){
-    currentTime--;
+    currentTime--
     timeLeft.textContent = currentTime
     if(currentTime == 0){
         //Cancelamos el metodo con clearInterval
@@ -50,6 +51,7 @@ function countDown(){
 
 }
 let countDownTimerId = setInterval(countDown, 100)
+//reseteamos la página
 function reiniciar(){
     boton.addEventListener('click', function(){
         location.reload();
