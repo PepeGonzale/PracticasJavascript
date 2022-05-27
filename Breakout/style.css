@@ -13,3 +13,15 @@
     left: 50px;
     bottom: 50px;
 }
+body{
+    background-color: #045de9;
+    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+}
+.user{
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    background-color: purple;
+    left: 50px;
+    bottom: 50px;
+}
