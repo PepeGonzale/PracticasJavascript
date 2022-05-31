@@ -15,9 +15,15 @@ buttons.map(button => {
             default: 
                 display.innerText += e.target.innerText
             case '=':
-                display.innerText = eval(display.innerText)
-                break;
+                // Con el metodo eval, hace las cuentas por si solo
+                 try{
+                   display.innerText = eval(display.innerText) ;
+                 }
+                 catch{
+                    (e) + 'Error'
+                }
                 
+                break;                
         }
     })
 })
